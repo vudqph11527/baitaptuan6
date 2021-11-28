@@ -25,7 +25,7 @@ public class SmsDAO {
 
     public List<Sms> getAllSms() {
         List<Sms> smsList = new ArrayList<>();
-        String query = "SELECT * FROM sms";
+        String query = "SELECT * FROM sms limit 11";
         Cursor cursor = sqLiteDB.getWritableDatabase().rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();

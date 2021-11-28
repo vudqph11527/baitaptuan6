@@ -2,6 +2,7 @@ package com.example.baitaptuan6.MVP;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,12 +40,12 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String image = listImages.get(position).getImageResource();
         File imgFile = new File(image);
+        Log.i("imgFile", String.valueOf(imgFile));
         if (image == null) {
             Toast.makeText(context, "Nothing", Toast.LENGTH_SHORT).show();
             return;
         } else {
-//            Glide.with(context).load(Uri.fromFile(imgFile)).into(holder.ivImage);
-            holder.ivImage.setText(image);
+            Glide.with(context).load(Uri.fromFile(imgFile)).into(holder.ivImage);
         }
     }
 
@@ -54,7 +55,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView ivImage;
+        ImageView ivImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
